@@ -1,0 +1,45 @@
+name: build (dry run)
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Create Cache Directory
+        run: mkdir -p ~/cache
+
+      - name: Cache Directory
+        id: cache
+        uses: actions/cache/@v3
+        with:
+          path: ~/cache
+          key: cache-${{ runner.os }}
+
+      - name: Pull Docker Image
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          docker pull paperist/texlive-ja:latest
+          docker save -o ~/cache/texlive.tar paperist/texlive-ja:latest
+
+      - name: Load Docker Image
+        if: steps.cache.outputs.cache-hit == 'true'
+        run: docker load -i ~/cache/texlive.tar
+
+      - name: Build LaTeX
+        run: make build
+
+      - name: Check Artifacts
+        run: |
+          # Check if the PDF file exists
+          if [ ! -e ./build/sample.pdf ]; then
+            echo "No PDF file found in the ./build directory."
+            exit 1
+          fi

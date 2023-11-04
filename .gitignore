@@ -1,0 +1,7 @@
+# temporary files
+**/tmp/**
+build/**
+!build/.gitkeep
+out/**
+!out/.gitkeep
+
