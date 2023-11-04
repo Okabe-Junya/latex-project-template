@@ -1,5 +1,7 @@
 # LaTeX Project Template
 
+[日本語](./README.md)
+
 ## Abstract
 
 This is a template repository for LaTeX projects. For those who find it difficult to set up a LaTeX environment, you can set up the environment using Docker.

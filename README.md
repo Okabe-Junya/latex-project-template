@@ -1,5 +1,7 @@
 # LaTeX Project Template
 
+[English](./README.en.md)
+
 ## 概要
 
 LaTeXプロジェクトのテンプレート用リポジトリです。LaTeX環境の構築が面倒な人のために、Dockerを用いて環境を構築することができます。
