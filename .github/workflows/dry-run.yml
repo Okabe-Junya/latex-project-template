@@ -4,6 +4,7 @@ on:
   pull_request:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build:
@@ -12,8 +13,25 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
+      - name: Restore Cache
+        uses: actions/cache@v2
+        with:
+          path: /usr/local/texlive
+          key: ${{ runner.os }}-texlive-${{ hashFiles('**/texlive.profile') }}
+          restore-keys: |
+            ${{ runner.os }}-texlive-
+
+
       - name: Pull Docker Image
         run: docker pull paperist/texlive-ja:latest
+
+      - name: Cache Docker Image
+        uses: actions/cache@v2
+        with:
+          path: /usr/local/texlive
+          key: ${{ runner.os }}-texlive-${{ hashFiles('**/texlive.profile') }}
+          restore-keys: |
+            ${{ runner.os }}-texlive-
 
       - name: Build LaTeX
         run: make build
