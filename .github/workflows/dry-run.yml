@@ -13,25 +13,25 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Restore Cache
-        uses: actions/cache@v2
-        with:
-          path: /usr/local/texlive
-          key: ${{ runner.os }}-texlive-${{ hashFiles('**/texlive.profile') }}
-          restore-keys: |
-            ${{ runner.os }}-texlive-
+      - name: Create Cache Directory
+        run: mkdir -p ~/cache
 
+      - name: Cache Directory
+        id: cache
+        uses: actions/cache/@v3
+        with:
+          path: ~/cache
+          key: cache-${{ runner.os }}
 
       - name: Pull Docker Image
-        run: docker pull paperist/texlive-ja:latest
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          docker pull paperist/texlive-ja:latest
+          docker save -o ~/cache/texlive.tar paperist/texlive-ja:latest
 
-      - name: Cache Docker Image
-        uses: actions/cache@v2
-        with:
-          path: /usr/local/texlive
-          key: ${{ runner.os }}-texlive-${{ hashFiles('**/texlive.profile') }}
-          restore-keys: |
-            ${{ runner.os }}-texlive-
+      - name: Load Docker Image
+        if: steps.cache.outputs.cache-hit == 'true'
+        run: docker load -i ~/cache/texlive.tar
 
       - name: Build LaTeX
         run: make build
