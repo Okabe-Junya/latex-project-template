@@ -39,7 +39,7 @@ jobs:
       - name: Check Artifacts
         run: |
           # Check if the PDF file exists
-          if [ ! -e ./build/*.pdf ]; then
+          if [ ! -e ./build/sample.pdf ]; then
             echo "No PDF file found in the ./build directory."
             exit 1
           fi
