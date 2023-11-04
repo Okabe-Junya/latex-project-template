@@ -1,0 +1,19 @@
+name: build (dry run)
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Pull Docker Image
+        run: docker pull paperist/texlive-ja:latest
+
+      - name: Build LaTeX
+        run: make build
