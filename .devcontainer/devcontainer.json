@@ -1,0 +1,17 @@
+{
+    "name": "Latex Environment",
+    "dockerFile": "Dockerfile",
+    "workspaceFolder": "/workspace",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "James-Yu.latex-workshop",
+                "mhutchie.git-graph",
+                "donjayamanne.githistory",
+                "EditorConfig.EditorConfig",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+}
