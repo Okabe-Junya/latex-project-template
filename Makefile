@@ -8,5 +8,4 @@ build:
 .PHONY: clean
 clean:
 	@echo "Cleaning..."
-	@rm -rf ./build
-	@mkdir ./build && touch ./build/.gitkeep
+	@rm -rf ./build && mkdir ./build
