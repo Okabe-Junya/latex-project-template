@@ -9,7 +9,7 @@ This is a template repository for LaTeX projects. For those who find it difficul
 ## Features
 
 - [x] LaTeX environment using Docker
-- [ ] LaTeX environment using devcontainer
+- [x] LaTeX environment using devcontainer
 - [x] Automatic build using CI
 - [x] Automatic upload artifacts
 
@@ -34,7 +34,9 @@ Clone this repository, pull the container image, and run `make build` from the h
 
 ## Usage (Using devcontainer)
 
-WIP
+If you are using VSCode, you can create an environment using [devcontainer](https://code.visualstudio.com/docs/devcontainers/containers). If you have installed the [Dev Containers extension -- Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers), a popup will appear, so please follow these instructions.
+
+In particular, when using it on a remote machine, be mindful of the machine specifications of the remote connection target.
 
 ## License
 
