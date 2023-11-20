@@ -45,3 +45,15 @@ jobs:
             sample.tex
             sample.bib
 
+      # -----
+      # If you are pushing to GCP, please uncomment after setting the appropriate secrets.
+
+      # - name: auth gcp
+      #   uses: 'google-github-actions/auth@v1'
+      #   with:
+      #     workload_identity_provider: 'projects/${{ secrets.ProjectID }}/locations/global/workloadIdentityPools/${{ secrets.PoolID }}/providers/${{ secrets.ProviderName }}'
+      #     service_account: '${{ secrets.ServiceAccount }}@${{ secrets.ProjectNumber }}.iam.gserviceaccount.com'
+
+      # - name: Use gcloud CLI
+      #   run: 'gcloud storage cp -r ./artifacts gs://${{ secrets.BucketsName }}'
+
