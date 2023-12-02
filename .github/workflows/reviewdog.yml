@@ -1,0 +1,37 @@
+name: reviewdog
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  reviewdog-check:
+    name: reviewdog (check)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: setup reviewdog
+        uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
+
+      - name: Set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: install Dependencies
+        run: npm ci
+
+      - name: Execute textlint
+        run: npx textlint -f checkstyle report.tex | reviewdog -f=checkstyle -name="textlint" -reporter="github-pr-review"
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
