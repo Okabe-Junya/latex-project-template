@@ -5,3 +5,5 @@ build/**
 out/**
 !out/.gitkeep
 
+# dependencies
+node_modules
