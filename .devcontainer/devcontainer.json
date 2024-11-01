@@ -17,7 +17,8 @@
                     {
                         "name": "ptex2pdf",
                         "tools": [
-                            "ptex2pdf"
+                            "ptex2pdf", 
+                            "pbibtex"
                         ]
                     }
                 ],
@@ -31,6 +32,13 @@
                             "-kanji=utf8 -synctex=1",
                             "%DOC%"
                         ]
+                    },
+                    {
+                        "command": "pbibtex",
+                        "args": [
+                            "%DOCFILE%"
+                        ],
+                        "name": "pbibtex"
                     }
                 ]
             }
