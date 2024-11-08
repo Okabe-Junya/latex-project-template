@@ -29,7 +29,8 @@
                             "-l",
                             "-ot",
                             "-kanji=utf8 -synctex=1",
-                            "%DOC%"
+                            "%DOC%",
+                            "-output-directory=build"
                         ]
                     }
                 ]
