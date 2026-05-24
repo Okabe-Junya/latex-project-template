@@ -1,0 +1,39 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore(deps)
+    groups:
+      github-actions:
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore(deps)
+      prefix-development: chore(deps-dev)
+    groups:
+      textlint:
+        patterns:
+          - textlint
+          - "textlint-*"
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: docker
+    directory: /.devcontainer
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore(deps)
