@@ -18,7 +18,7 @@ jobs:
 
       - name: Cache Directory
         id: cache
-        uses: actions/cache/@v3
+        uses: actions/cache@v4
         with:
           path: ~/cache
           key: cache-${{ runner.os }}
@@ -37,7 +37,7 @@ jobs:
         run: make build
 
       - name: Upload PDF
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: artifacts
           path: |
