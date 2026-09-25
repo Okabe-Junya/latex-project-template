@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   reviewdog-check:
     name: reviewdog (check)
@@ -21,7 +24,7 @@ jobs:
       - name: setup reviewdog
         uses: reviewdog/action-setup@d8a7baabd7f3e8544ee4dbde3ee41d0011c3a93f # v1.5.0
         with:
-          reviewdog_version: latest
+          reviewdog_version: v0.21.2
 
       - name: Set up node
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
