@@ -28,8 +28,12 @@ jobs:
 
       - name: Pull Docker Image
         if: steps.cache.outputs.cache-hit != 'true'
+        # Pinned 2026-09-26 to the digest the "latest"/"debian" tags resolved to at pin
+        # time; refreshed manually (Dependabot's docker ecosystem does not track
+        # `docker pull` inside run: steps).
         run: |
-          docker pull paperist/texlive-ja:latest
+          docker pull paperist/texlive-ja:debian@sha256:cc82e975855b858b699be1e037343ff158875c2bc50aa898864edeb1f95f7276
+          docker tag paperist/texlive-ja:debian@sha256:cc82e975855b858b699be1e037343ff158875c2bc50aa898864edeb1f95f7276 paperist/texlive-ja:latest
           docker save -o ~/cache/texlive.tar paperist/texlive-ja:latest
 
       - name: Load Docker Image
