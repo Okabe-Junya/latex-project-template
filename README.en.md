@@ -23,11 +23,10 @@ This is a template repository for LaTeX projects. For those who find it difficul
 
 ### How to build
 
-Clone this repository, pull the container image, and run `make build` from the host machine. The build result will be output to `./build` directory on the host machine.
+Clone this repository and run `make build` from the host machine. The container image is pulled automatically on the first run. The build result will be output to `./build` directory on the host machine.
 
 ```bash
 % git clone https://github.com/Okabe-Junya/latex-project-template
-% docker pull paperist/texlive-ja:latest
 % cd latex-project-template
 % make build
 ```
