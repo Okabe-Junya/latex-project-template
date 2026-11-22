@@ -23,11 +23,10 @@ LaTeXプロジェクトのテンプレート用リポジトリです。LaTeX環�
 
 ### ビルド
 
-リポジトリのクローン、コンテナイメージのpullを行った上で、ホストマシンから `make build` を実行してください。ホストマシンの `./build` ディレクトリにビルド結果が出力されます。
+リポジトリをクローンした上で、ホストマシンから `make build` を実行してください。コンテナイメージは初回実行時に自動でpullされます。ホストマシンの `./build` ディレクトリにビルド結果が出力されます。
 
 ```bash
 % git clone https://github.com/Okabe-Junya/latex-project-template
-% docker pull paperist/texlive-ja:latest
 % cd latex-project-template
 % make build
 ```

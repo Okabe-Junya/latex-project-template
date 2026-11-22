@@ -1,4 +1,4 @@
-FROM paperist/texlive-ja
+FROM paperist/texlive-ja:debian@sha256:cc82e975855b858b699be1e037343ff158875c2bc50aa898864edeb1f95f7276
 
 ARG USERNAME=user-name-goes-here
 ARG USER_UID=1000
